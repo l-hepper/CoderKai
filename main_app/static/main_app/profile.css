@@ -1,0 +1,333 @@
+
+.profile-card {
+    background: linear-gradient(to bottom, #0D304A 20%, #0F1826 90%);
+    border-radius: 6px;
+    padding: 1rem 0rem;
+    margin-left: 2.5rem;
+    margin-top: 3rem;
+}
+
+.profile-picture {
+    border: goldenrod solid 3px;
+}
+
+#username {
+    color: goldenrod;
+    padding-top: 3%;
+}
+
+.row {
+    display: flex;
+}
+
+.profile-options {
+    padding-top: 1rem;
+    width: 90%;
+    margin-left: 5%;
+}
+
+#profile-header {
+    color: goldenrod;
+    border-bottom: 1px goldenrod solid;
+    margin-top: 1rem;
+    padding-bottom: 0.2rem;
+}
+
+.profile-item {
+    padding-left: 2rem;
+    text-align: left;
+}
+
+.profile-info-label {
+    color: goldenrod;
+    font-size: 1.4rem;
+    text-align: left;
+}
+
+.profile-info-answer {
+    display: block;
+    font-size: 1.4rem;
+    text-align: left;
+}
+
+.profile-info-answer > p {
+    word-wrap: break-word;
+}
+
+.profile-info-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#stats-header {
+    margin-top: 6rem;
+    color: goldenrod;
+    border-bottom: 1px goldenrod solid;
+}
+
+.stat-info-item {
+    color: goldenrod;
+    text-align: left;
+}
+
+.stat-row {
+    font-size: 1.4rem;
+    padding-top: .5rem;
+    padding-bottom: 0.5rem;
+}
+
+#highest-scoring-posts-header {
+    color: goldenrod;
+    border-bottom: 1px goldenrod solid;
+}
+
+.interest-tag, .motivation-tag {
+    background-color: crimson;
+    border-radius: 8px;
+    padding: 0.3rem;
+}
+
+.button-options button {
+    margin-top: 2rem;
+    background-color: #0F1826;
+}
+
+.button-options {
+    margin-top: 1.5rem;
+    background-color: #0F1826;
+}
+
+.dropdown-menu {
+    background-color: #0D304A;
+    color: goldenrod;
+}
+
+.dropdown-item {
+    color: white;
+}
+
+.dropdown-item:hover {
+    background-color: #0D304A;
+    color: goldenrod;
+}
+
+h4 {
+    font-size: 1.3rem;
+}
+
+.highest-scoring-posts {
+    margin-top: 5rem;
+}
+
+#highest-scoring-posts-header {
+    margin: 0;
+}
+
+.timestamp {
+    display: block;
+    border-top: 1px solid darkgoldenrod;
+    padding-top: 0.2rem;
+    font-size: 0.8rem;
+    color: #7797BF !important;
+    margin-right: auto;
+}
+
+.response {
+    padding-top: 0.5rem;
+}
+
+.post-body-response {
+    background-color: #0D304A;
+    padding-bottom: 0.2rem;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+}
+
+.timestamp {
+    border-top: 1px solid darkgoldenrod;
+    padding-top: 0.2rem;
+    font-size: 0.8rem;
+    color: #7797BF !important;
+}
+
+.coderkaipoint-operation {
+    color: goldenrod;
+    background-color: #0D304A;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+.response-text {
+    text-align: left;
+}
+
+.full-response {
+    width: 100%;
+    margin-left: 0rem;
+}
+
+.top-post-link {
+    color: goldenrod;
+    text-decoration: none;
+}
+
+.top-post-link:hover {
+    color: #FCC742;
+}
+
+.kudos-svg {
+    text-align: center;
+}
+
+.coderkaikudos-operation-mobile {
+    display: none;
+}
+
+#rank {
+    font-weight: bold;
+}
+
+.Cadet {
+    color: whitesmoke;
+}
+
+.Sensei {
+    color: crimson;
+}
+
+.Kernel {
+    color: lime;
+}
+
+.Lancer {
+    color: fuchsia;
+}
+
+.Brigadier {
+    color: cyan;
+}
+
+@media (max-width: 575px) {
+
+    .container {
+        padding-top: 15%;
+    }
+
+    #profile-header {
+        margin-top: 0rem;
+    }
+
+    .profile-info-box {
+        margin-top: 10%;
+    }
+
+    .profile-item {
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
+    }
+
+    .profile-card {
+        margin-top: 0;
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .profile-info-label {
+        color: goldenrod;
+        font-size: 1rem;
+    }
+
+    .profile-info-label {
+        text-align: left;
+    }
+
+    .profile-options {
+        width: 100%;
+    }
+
+    .profile-info-answer {
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    #stats-header {
+        margin-top: 1rem;
+    }
+
+    .highest-scoring-posts {
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+
+    .profile-stats {
+        padding-top: 1rem;
+    }
+
+    .profile-stats * {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .stat-row {
+        display: inline-flex;
+        flex-direction: row;
+        font-size: 1rem;
+    }
+
+    .stat-info-item {
+        color: goldenrod;
+        text-align: left;
+        padding-right: 0;
+    }
+
+    .date {
+        padding-left: 0;
+        padding-right: 0;
+        font-size: 0.8rem;
+    }
+
+    .tag-list-mobile {
+        display: inline-flex;
+        background-color: blue;
+        color: #7797BF;
+    }
+
+    .coderkaipoint-operation {
+        display: none;
+    }
+
+    .kudos-svg {
+        text-align: center;
+    }
+
+    .full-response {
+        width: 120%;
+        margin-right: 0;
+        margin-left: -5%;
+        margin-top: -15%;
+    }
+
+    .timestamp {
+        margin-bottom: 0.2rem;
+    }
+
+    .coderkaikudos-operation-mobile {
+        display: block;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        color: goldenrod;
+    }
+
+
+}

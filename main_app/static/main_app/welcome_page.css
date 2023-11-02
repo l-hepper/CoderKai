@@ -1,0 +1,264 @@
+.welcome-message {
+    border-radius: 5px;
+    background-color: #0D304A;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 8% !important;
+    margin-bottom: 5rem !important;
+}
+
+.navbar {
+    margin-bottom: 2rem !important;
+}
+
+.dashboard-message {
+    border-radius: 5px;
+    width: 80%;
+    margin-left: 10%;
+    padding: 1rem;
+}
+
+.navbar {
+    margin-bottom: 8%;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border: goldenrod solid 1px;
+    border-radius: 5px;
+    margin-left: 10%;
+    width: 80%;
+    padding: 1rem;
+}
+
+.features h5 {
+    color: goldenrod;
+}
+
+.card {
+    background-color:#0D304A;
+    border: none;
+}
+
+.card img {
+    height: 10rem;
+    width: 16rem;
+}
+
+h2 {
+    margin-top: 8%;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.rec-for-you {
+    margin: 0;
+    color: whitesmoke;
+    text-align: center;
+    border-bottom: whitesmoke 1px solid;
+    margin-top: 1.5rem;
+}
+
+.rec-posts-help {
+    text-align: center;
+    color: #7797BF;
+    margin-top: 0.2rem;
+}
+
+#post-list {
+    margin-left: 0;
+    margin-right: 0 !important;
+}
+
+.group-list {
+    margin-top: -0.5rem !important;
+    margin-bottom: 3rem;
+}
+
+.card {
+    min-height: 100%;
+    text-align: center;
+}
+
+.group-name {
+    color: goldenrod;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.group-name-link {
+    text-decoration: none;
+}
+
+.group-name:hover {
+    color: #FCC742;
+}
+
+.tag-list {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.2rem;
+}
+
+.leader-info {
+    display: flex;
+    justify-content: center;
+    color: #7797BF;
+    font-size: 0.8rem;
+}
+
+.leader-info a {
+    color: goldenrod;
+    font-size: 0.8rem;
+    text-decoration: none;
+}
+
+.leader-info a:hover {
+    color: #FCC742;
+    font-size: 0.8rem;
+}
+
+.card-welcome {
+    min-height: 100%;
+    text-align: left-align;
+}
+
+.card-welcome .card-text {
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.card-welcome .card-title {
+    font-size: 1.4rem;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+}
+
+.testimonials {
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+}
+
+.testimonials img {
+    border: goldenrod 2px solid;
+}
+
+.testimonials h2 {
+    color: goldenrod;
+}
+
+.testimonials p {
+    color: whitesmoke;
+}
+
+.screenshot {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    transform: perspective(1000px) rotateX(10deg) rotateY(10deg);
+}
+
+.screenshot:hover {
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.4);
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+}
+
+#counter {
+    font-size: 3rem;
+    font-weight: bold;
+    color: goldenrod;
+}
+
+.counter-text {
+    display: flex;
+    justify-content: center;
+    align-items: first baseline;
+    color: whitesmoke;
+    width: 100%;
+    margin-left: 0%;
+    font-size: 2rem;
+}
+
+@media (max-width: 575px) {
+
+    .welcome-message {
+        border-radius: 5px;
+        background-color: #0D304A;
+        width: 80%;
+        margin-left: 10%;
+        margin-top: 8% !important;
+        margin-bottom: 5rem !important;
+    }
+
+    .rec-for-you {
+        margin-top: -1rem;
+    }
+
+    .rec-posts-help {
+        text-align: center;
+        color: #7797BF;
+        margin-top: 0.2rem;
+        font-size: 0.8rem;
+    }
+
+    .card {
+        border-radius: 6px !important;
+        border-bottom: none !important;
+    }
+
+    .card-welcome {
+        text-align: center;
+
+    }
+
+    .group-list {
+        order: 1;
+        display: flex;
+        flex-direction: row;
+        margin-top: 2rem;
+        width: 100%;
+        margin-left: 0;
+        row-gap: 1rem;
+    }
+
+    .dashboard-message {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .tag-mobile {
+        list-style: none;
+        color: whitesmoke;
+        padding-left: 0.4rem;
+        padding-right: 0.4rem;
+        border-radius: 12px;
+        background-color: crimson;
+        font-size: 0.8rem;
+    }
+
+    .counter-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: whitesmoke;
+        width: 100%;
+        margin-left: 0%;
+        font-size: 2rem;
+        padding: 0.5rem;
+    }
+
+    .counter-text * {
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    #counter {
+        font-size: 2rem;
+        font-weight: bold;
+        color: goldenrod;
+    }
+}

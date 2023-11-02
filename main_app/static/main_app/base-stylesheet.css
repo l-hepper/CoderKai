@@ -1,0 +1,159 @@
+/* * {
+    border: red dashed 1px;
+} */
+
+html {
+    background-color: #0F1826;
+}
+
+body {
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: #0F1826;
+}
+
+.navbar {
+    --bs-navbar-padding-y: 0rem;
+    border-bottom: goldenrod solid 2px;
+    background-color: #0F1826;
+}
+
+.navbar-nav {
+    margin-left: 10rem;
+}
+
+.navbar-collapse {
+    margin-bottom: -1.6rem;
+}
+
+.container-fluid {
+    background-color: #0F1826;
+}
+
+.navbar-toggler {
+    background-color: goldenrod;
+}
+
+.navbar-toggler:focus {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    background-color: goldenrod;
+}
+
+.navbar-brand {
+    border-right: goldenrod 2px solid;  
+}
+
+.btn {
+    color: goldenrod;
+    border: solid goldenrod 1px;
+}
+
+.btn:hover {
+    color: #FED852;
+    border: solid #FED852 1px;
+}
+
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.3rem;
+    color: whitesmoke;
+    margin-right: 3rem;
+}
+
+.navbar-icon {
+    fill: whitesmoke;
+    height: 3rem;
+    width: 3rem;
+}
+
+.nav-item:hover {
+
+    .navbar-icon {
+        fill: goldenrod;
+    }
+
+    .nav-link {
+        color: goldenrod;
+    }
+}
+
+footer {
+    border-top: solid goldenrod 1px;
+}
+
+.footer span {
+    color: white;
+}
+
+.brand {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: goldenrod;
+}
+
+.profile-picture-nav {
+    border: goldenrod 2px solid;
+}
+
+.d-flex {
+    margin-top: 1.8rem;
+}
+
+@media (max-width: 575px) {
+
+    body {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .navbar-brand {
+        max-width: 8rem;
+        border-right: none;
+    }
+
+    .navbar-brand > img {
+        width: 75%;
+        height: 75%;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .navbar-icon {
+        margin-right: 0.5rem;
+        width: 1.3rem;
+        height: 1.3rem;
+    }
+
+    .collapse {
+        margin-top: 0;
+        margin-bottom: 4px;
+    }
+
+    .btn:hover {
+        border: goldenrod solid 1px;
+        color: goldenrod;
+        background-color: #0F1826;
+    }
+
+    .profile-picture-nav {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 0.2rem;
+    }
+
+    .d-flex {
+        margin-top: 0;
+    }
+
+    .navbar-nav {
+        margin-left: 0rem;
+    }
+}

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page-title %} 
+    Coder Kai - New Reply
+{% endblock %}
+
+{% block css-stylesheet %}
+    <link rel="stylesheet" href={% static "main_app/post_content.css" %}>
+    <link rel="stylesheet" href={% static "main_app/registration/signup.css" %}>
+    <style>
+
+        #login-form {
+            width: 80%;
+            margin-left: 10%;
+        }
+
+        .row {
+            width: 80%;
+            margin-left: 10%;
+        }
+
+        #id_body {
+            height: 5rem;
+        }
+
+        @media (max-width: 575px) {
+            #login-form {
+                width: 95%;
+                margin-left: 2.5%;
+            }
+        }
+
+
+    </style>
+{% endblock %}
+
+{% block mainbody %}
+<h2>Replying to:</h2>
+<div class="row">
+    <div class="col-2 op-info-response">
+            <div class="col profile-pic-response">
+                <img class="profile-picture rounded-circle" width="120" height="120" src={{ response.author.profileinfo.avatar.url }}>
+                <div class="row">
+                    <div class="col profile-info-response">
+                        <p id="username">{{ response.author }}</p>
+                        <p><span id="rank"> Code Master</span></p>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="col-10 post-body-response">
+    <div class="response-text">
+        <p style="white-space: pre-line">
+        {{ response.body }}
+        </p>
+    </div>
+    <div class="response-author">Answered by&nbsp<span><a class="username" href="#">{{ response.author }}</a></span>&nbspon {{ response.timestamp }}</span></div>
+    </div>
+
+    <div class="col-2">
+    </div>
+</div>
+
+<div>
+    <br>
+        <form method="post" id="login-form">
+            {% csrf_token %}
+            {{ form }}
+            <div>
+                <div class="row">
+                    <div class="col" id="form-buttons">
+                        <button type="submit" class="btn btn-outline-secondary btn-lg px-4 submit-button">Submit</button>
+                    </div>
+                </row>
+            </div>
+        </form>
+    </div>
+{% endblock %}

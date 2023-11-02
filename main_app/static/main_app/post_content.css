@@ -1,0 +1,531 @@
+.op-post {
+    margin-top: 5%;
+}
+
+.tag-list {
+    display: inline-flex;
+    color: #7797BF;
+}
+
+.tag {
+    list-style: none;
+    color: whitesmoke;
+    margin-left: 0.6rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    margin-bottom: 0.2rem;
+    border-radius: 12px;
+    background-color: crimson;
+    font-size: 0.9rem;
+}
+
+pre {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+code {
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.post-type-tag {
+    display: inline;
+    margin-left: 0.5rem 0.5rem;
+    border-radius: 12px;
+    padding: 0rem 0.3rem;
+    font-size: 1rem;
+}
+
+.Introduction {
+    background-color: darkgoldenrod;
+}
+
+.Discussion {
+    background-color: darkcyan;
+}
+
+.Question {
+    background-color: forestgreen;
+}
+
+.post-body {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 1rem;
+    color: white;
+    background-color: #0D304A;
+    border-radius: 8px;
+}
+
+.op-info {
+    padding-top: 1rem;
+    text-align: center;
+}
+
+.profile-picture {
+    border: goldenrod 2px solid;
+    margin-bottom: 1rem;
+}
+
+#username {
+    font-size: 1.3rem;
+    padding-top: 1rem;
+    color: goldenrod;
+}
+
+.username-link {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: goldenrod;
+}
+
+.username-link:hover {
+    text-decoration: none;
+    color:#FCC742;
+}
+
+#coder-kai-points {
+    margin-bottom: 1rem;
+}
+
+.coderkaipoint-operation {
+    color: goldenrod;
+}
+
+.kudos-button {
+    border: none;
+    background:local;
+}
+
+.coderkaipoint-operation-response {
+    color: goldenrod;
+}
+
+.timestamp {
+    border-top: 1px solid #7797BF;
+    padding-top: 0.2rem;
+    font-size: 0.8rem;
+    margin-top: auto;
+    color: #7797BF !important;
+}
+
+hr {
+    color: goldenrod;
+}
+
+#post-title {
+    display: inline;
+    color: goldenrod;
+}
+
+.profile-info > p {
+    color: goldenrod;
+    font-size: 0.8rem;
+}
+
+.profile-info > #username {
+    font-size: 1.3rem;
+}
+
+.tag-list {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.tag {
+    font-size: 1rem;
+    margin-left: 0;
+    display: inline;
+}
+
+.response-count {
+    margin-left: 8%;
+    display:inline-flex;
+    font-size: 2.1rem;
+    color: darkgoldenrod;
+}
+
+.reply-count {
+    margin-left: 10%;
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.reply-count > svg,p {
+    margin-bottom: 0;
+}
+
+#mf-svg {
+    margin-top: 0.2rem;
+}
+
+.response-count > p {
+    margin-left: 1rem;
+}
+
+.response-count > svg {
+    margin-top: 0.8rem;
+}
+
+.post-options {
+    margin-left: auto;
+    margin-right: 2rem;
+}
+
+.post-options > button {
+    display: inline-flex;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    font-size: 1.1rem;
+    margin-left: 0.5rem;
+}
+
+#kudos {
+    display: none;
+}
+
+.response {
+    padding-left: 0rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    margin-left: 7.65%;
+    width: 91%;
+    border-top: goldenrod solid 1px;
+}
+
+.op-info-response {
+    padding-left: 0.1rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.post-body-response {
+    padding-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    background-color: #0D304A;
+    border-radius: 8px;
+    padding-top: 0.5rem;
+}
+
+.profile-info-response {
+    color: goldenrod;
+}
+
+.profile-info-response > #username {
+    padding-top: 0.1rem;
+    font-size: 1rem;
+}
+
+.profile-info-response * {
+    font-size: 0.9rem;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0;
+    padding-bottom: 0.3rem;
+}
+
+.reply {
+    margin-top: 0.3rem;  
+    display: inline-flex;
+    margin-left: 15%;
+    width: 86%;
+}
+
+.reply-profile-pic {
+    display: none;
+}
+
+.reply > .op-info {
+    padding: 0;
+    padding-top: 0.3rem;
+}
+
+.reply .post-body {
+    margin-left: 10%;
+    background-color:#2F536C;
+    padding-right: 1rem;
+    padding-top: 1.3rem;
+    width: 91%;
+}
+
+.reply .post-body > p {
+    margin-bottom: 1rem;
+}
+
+#username-reply {
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+}
+
+.reply .post-author {
+    /* display: none; */
+    color:#7797BF;
+}
+
+.reply .post-author .username {
+    color: goldenrod;
+    text-decoration: none;
+}
+
+.reply .post-author .username:hover {
+    color: #FCC742;
+}
+
+.reply-op-info {
+    padding-bottom: 0.1rem;
+    margin-bottom: 0.1rem;
+}
+
+.post-author-op {
+    display: none;
+    font-size: 0.8rem;
+    color:#7797BF;
+}
+
+.post-author-op .username {
+    color: goldenrod;
+    text-decoration: none;
+}
+
+.post-author-op .username:hover {
+    color: #FCC742;
+}
+
+.response-author {
+    display: none;
+    font-size: 0.8rem;
+    color:#7797BF;
+    margin-bottom: 0.5rem;
+}
+
+.response-author .username {
+    color: goldenrod;
+    text-decoration: none;
+}
+
+.response-author .username:hover {
+    color: #FCC742;
+}
+
+.bi-caret-up-fill {
+    fill: goldenrod;
+}
+
+.bi-caret-up-fill:hover {
+    fill: #FCC742;
+}
+
+.bi-caret-up-fill:active {
+    fill: #DAA520;
+    transform: scale(0.95);
+}
+
+.kudos-error-mobile {
+    display: none;
+}
+
+#mobile-error-message-div {
+    display: none;
+}
+
+.pls-go-away {
+    display: none;
+}
+
+#rank {
+    font-weight: bold;
+}
+
+.Cadet {
+    color: whitesmoke;
+}
+
+.Sensei {
+    color: crimson;
+}
+
+.Kernel {
+    color: lime;
+}
+
+.Lancer {
+    color: fuchsia;
+}
+
+.Brigadier {
+    color: cyan;
+}
+
+@media (max-width: 575px) {
+
+    .op-info-response {
+        display: none;
+    }
+
+    .response-count {
+        margin-left: 5%;
+        width: 90%;
+    }
+
+    .post-options {
+        margin-right: 0;
+        order: 2;
+        display: inline-flex;
+    }
+
+    .tag-list {
+        margin-bottom: 1rem;
+    }
+
+    .post-author-op {
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .response-count {
+        font-size: 2rem;
+        width: 50%;
+    }
+
+    .response {
+        width: 96%;
+        margin: 0;
+        margin-left: 4%;
+        border-top: goldenrod solid 1px;
+        padding-top: 1rem;
+        padding-bottom: 0.25rem;
+        margin-bottom: 1rem;
+    }
+
+    .post-body-response {
+        width: 98%;
+        margin-left: 0.5%;
+        margin-bottom: 0;
+        padding-top: 0.5rem;
+    }
+
+    .response-text {
+        align-self: flex-start;
+        margin-left: 1rem;
+        margin-bottom: 0rem;
+    }
+
+    .response-author {
+        align-self: flex-end;
+        margin-top: 0.5rem;
+        margin-left: 1rem;
+        margin-bottom: 0;
+    }
+
+    .op-info {
+        display: none;
+    }
+
+    .reply {
+        width: 100%;
+        margin-left: 2%;
+        margin-bottom: 0rem;
+        padding-bottom: 0;
+    }
+
+    .reply .post-author {
+        display: block;
+        font-size: 0.8rem;
+    }
+
+    .timestamp {
+        display: none;
+    }
+
+    .reply .post-body {
+        background-color:#2F648E;
+    }
+
+    .response-author {
+        margin-left: 0;
+        display: block;
+    }
+
+    #reply-button {
+        font-size: 1rem;
+    }
+
+    #kudos {
+        font-size: 1.1rem;
+        display: inline-flex;
+    }
+
+    #kudos-response-button,#kudos-post-button-mobile * {
+        padding: 0;
+        font-size: 0.7rem;
+        display: inline-flex;
+    }
+
+    #kudos-response-button * {
+        font-size: 1.5rem;
+        display: inline-flex;
+    }
+
+    #reply-button {
+        font-size: 1.1rem;
+    }
+
+    .post-body {
+        width: 98%;
+        margin-left: 1%;
+    }
+
+    .op.post > .row {
+        justify-content: center;
+    }
+
+    .op-post {
+        justify-content: center;
+    }
+
+    .kudos-error-mobile {
+        display: inline-flex;
+        align-self: flex-end;
+        margin-left: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    #mobile-error-message-div {
+        display: inline-flex;
+        align-self: flex-end;
+        margin-left: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .btn:hover {
+        border: goldenrod solid 1px;
+        color: goldenrod;
+        background-color: #0D304A;
+    }
+
+    #kudos-response-button * {
+        font-size: 1.5rem;
+        display: inline-flex;
+    }
+
+    .mf-post-mobile-button {
+        font-size: 0.1rem;
+    }
+
+    .pls-go-away {
+        display: inline-flex;
+        padding: 0;
+    }
+
+    .timestamp-reply {
+        display: inline-flex;
+    }
+
+}

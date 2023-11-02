@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page-title %} 
+    Coder Kai - Complete Profile
+{% endblock %}
+
+{% block css-stylesheet %}
+    <link rel="stylesheet" href={% static "main_app/registration/signup.css" %}>
+{% endblock %}
+
+{% block mainbody %}
+    <div class="text-center login-form">
+    <h2>Complete Your Profile</h2>
+    <h3 id="coderkai-profile-instruction">Coder Kai will dynamically create recommended groups and community posts based on your profile.</h3>
+        <form method="post" id="login-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <div id="form-buttons">
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-outline-secondary btn-lg px-4 login-button">Complete Profile</button>
+                    </div>
+                </row>
+            </div>
+        </form>
+    </div>
+{% endblock %}

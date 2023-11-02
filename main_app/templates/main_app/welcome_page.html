@@ -1,0 +1,213 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page-title%}
+{% if user.is_authenticated %}
+  Coder Kai - Dashboard
+{% else %}
+  Coder Kai - Welcome!
+{% endif %}
+{% endblock %}
+
+{% block css-stylesheet %}
+    <link rel="stylesheet" href={% static "main_app/posts.css" %}>
+    <link rel="stylesheet" href={% static "main_app/welcome_page.css" %}>
+    <link rel="stylesheet" href={% static "main_app/coderkai_guide.css" %}>
+{% endblock %}
+
+
+{% block mainbody %}
+
+{% if user.is_authenticated %}
+  <div class="dashboard-message">
+    <h3 class="rec-for-you">Recommended For You</h3>
+    <p class="rec-posts-help">Coder Kai recommends these groups and ongoing threads based on your interests and motivations</p>
+    <div class="row">
+      <div class="row group-list">
+        {% for group in group_list %}
+          <div class="col-md-4">
+            <div class="card mb-4" style="padding-top: 1rem;background-color: #0D304A">
+              <img class="card-img" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 180px; width: 65%; align-self: center; border: darkcyan solid 1px" src={{ group.group_image.url }} data-holder-rendered="true">
+              <div class="card-body">
+                <a class="group-name-link" href={% url "kaigroup" group.slug %}><p class="card-text group-name">{{ group.name }}</p></a>
+                <div class="tag-list">
+                    {% for motivation in group.motivations.all %}
+                    <span class="tag">{{ motivation }}</span>
+                    {% endfor %}
+                    {% for interest in group.interests.all %}
+                    <span class="tag">{{ interest }}</span>
+                    {% endfor %}
+                </div>
+                <div class="leader-info">
+                    <p>Leader: <a href={% url "profile" group.creator.username %}>{{ group.creator }}</a></p>
+                </div>
+                <p class="card-text text-white group-about">{{ group.about }}</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+
+    <div style="margin: 0; width: 100%;" id="post-list">
+      <ul>
+          {% for post, replies in posts.items %}
+              <li class="post-item">
+                  <article>
+                      <a href="{% url "post_content" post.slug %}"><h3 class="post-title">{{ post.title|capfirst }}</h3></a>
+                      <span class="post-type-tag {{ post.type_tag.name }}">
+                          {{ post.type_tag }}
+                      </span>
+                      <div class="tag-list-mobile">
+                          {% for tag in post.tags.all %}
+                          <span><li class="tag-mobile">{{ tag }}</li></span>
+                          {% endfor %}
+                      </div>
+                      <p style="white-space: pre-line; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;" class="post-preview">{{ post.preview }}</p>
+                      <div class="post-info">
+                              <div class="post-replies">
+                                  <svg style="margin: 0;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-right-text" viewBox="0 0 16 16">
+                                      <path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z"/>
+                                      <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                                  </svg> {{ replies }}
+                              </div>
+                              <div class="post-kudos-count">
+                                  <svg style="margin: 0;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+                                      <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+                                    </svg>
+                              {{ post.kudos }}
+                              </div>
+                          <div class="tag-list">Tags:
+                              {% for tag in post.tags.all %}
+                              <span><li class="tag">{{ tag }}</li></span>
+                              {% endfor %}
+                          </div>
+                          <div class="post-author">Posted by <span><a class="username" href={% url "profile" post.author %}>{{ post.author }} </a></span> on {{ post.timestamp }}</span></div>
+                      </div>
+                  </article>
+              </li>
+          <hr style="color: #7797BF" />
+          {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+
+{% else %}
+  <div class="px-4 py-5 my-5 text-center welcome-message">
+    <h1 class="display-5 fw-bold text-white">Welcome to Coder Kai!</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4 text-white">A place for coders to gather, practice, and learn.</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='{% url "login" %}'">Log In</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='{% url "signup" %}'">Sign Up</button>
+      </div>
+    </div>
+  </div>
+  
+  <hr style="color: goldenrod;">
+  <div class="counter-text">
+    <p >Join a thriving community of&nbsp</p><div id="counter">1,623,123</div><p>&nbspcoders and counting!</p>
+  </div>
+  <hr style="color: goldenrod;">
+
+<!--Coder Kai guide -->
+<!--First featurette row-->
+<div class="row featurette">
+  <div class="col-md-7">
+    <h2 class="featurette-heading fw-normal lh-1">Step 1: Sign up to get started!</h2>
+    <p class="lead">Create an account by signing up and selecting your <span class="tag">interests</span> and <span class="tag">motivations</span>!
+      <br>
+      <br>
+      Everyone begins as a <span style="font-weight: bold">Code Cadet</span> with a single Kudos, but you can earn more and climb the ranks by partipating in and contributing to the community.
+    </p>
+  </div>
+  <div class="col-md-5">
+    <img class="screenshot" style="width: 400px; height: 350px; border: goldenrod 2px solid; border-radius: 4px;" src={%static "./main_app/images/step1-screenshot.png" %}>
+  </div>
+</div>  
+<hr />
+
+<div class="row featurette">
+  <div class="col-md-7 order-md-2 featurette-text-reverse">
+    <h2 class="featurette-heading fw-normal lh-1">Step 2: Say 'Hi!' on Coder Kai!</h2>
+    <p class="lead">Time to introduce yourself to the community!
+      <br>
+      <br>
+      Go to the 'All Posts' link at the top and select 'New' to create your introduction post and tell us about yourself! Make sure to tag your post with an interest or motivation.
+    </p>
+  </div>
+  <div class="col-md-5 order-md-1">
+      <img class="screenshot" style="width: 400px; height: 350px; border: goldenrod 2px solid; border-radius: 4px;" src={%static "./main_app/images/step2-screenshot.png" %}>
+
+  </div>
+</div>
+<hr />
+
+<div class="row featurette">
+  <div class="col-md-7">
+    <h2 class="featurette-heading fw-normal lh-1">Step 3: Check out the recommendation dashboard!</h2>
+    <p class="lead">Click the 'Dashboard' link at the top to see your recommended groups and ongoing discussions.
+      <br>
+      <br>
+      These are based on your <span class="tag">interests</span> and <span class="tag">motivations</span> which you can update at any time from your profile 'Options' menu.
+      Discussions which are more active or have higher kudos also get recommended more.
+    </p>
+  </div>
+  <div class="col-md-5">
+      <img class="screenshot" style="width: 400px; height: 350px; border: goldenrod 2px solid; border-radius: 4px;" src={%static "./main_app/images/step3-screenshot.png" %}>
+
+  </div>
+</div>  
+<hr />
+
+<div class="row featurette">
+  <div class="col-md-7 order-md-2 featurette-text-reverse">
+    <h2 class="featurette-heading fw-normal lh-1">Step 4: Start earning Kudos!</h2>
+    <p class="lead">Earn Kudos by posting questions and answers. Give Kudos to others by hitting the 'up' arrow on their posts and answers too!
+    <br>
+    <br>
+    100 Kudos will earn you a new rank.
+    Everyone begins as a <span style="font-weight: bold">Code Cadet</span>. Climb the ranks through <span style="color: cyan; font-weight: bold;">Bit Brigadier</span>, <span style="color: lime; font-weight: bold;">Kernel Knight</span> and
+    <span style="color: fuchsia; font-weight: bold;">Logic Lancer</span> to the ultimate title: <span style="color: crimson; font-weight: bold;">Cyber Sensei</span>
+  </p>
+  </div>
+  <div class="col-md-5 order-md-1">
+      <img class="screenshot" style="width: 400px; height: 350px; border: goldenrod 2px solid; border-radius: 4px;" src={%static "./main_app/images/step4-screenshot.png" %}>
+  </div>
+</div>
+<hr />
+
+<div class="row featurette">
+  <div class="col-md-7">
+    <h2 class="featurette-heading fw-normal lh-1">Step 5: Join a group, or create one! </h2>
+    <p class="lead">Join a group that matches your learning goals or start a new one all your own.
+    <br>
+    <br>
+    Groups have a collective Kudos and a hall of fame for their most kudosed members.
+  </p>
+  </div>
+  <div class="col-md-5">
+      <img class="screenshot" style="width: 400px; height: 350px; border: goldenrod 2px solid; border-radius: 4px;" src={%static "./main_app/images/step5-screenshot.png" %}>
+  </div>
+</div>  
+{% endif %}
+
+<script>
+  // Get the counter element
+  const counterElement = document.getElementById('counter');
+
+  // Start value
+  let count = 1623123;
+
+  // Function to increment the counter
+  function incrementCounter() {
+      count++;
+      counterElement.textContent = count.toLocaleString(); // toLocaleString adds commas for thousands, millions, etc.
+  }
+
+  // Increment the counter every few seconds (e.g., every 3 seconds)
+  setInterval(incrementCounter, 3000);
+</script>
+
+  
+{% endblock %}

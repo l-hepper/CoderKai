@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page-title%}
+    Coder Kai - All Groups
+{% endblock %}
+
+{% block css-stylesheet %}
+    <link rel="stylesheet" href={% static "main_app/all_groups.css" %}>
+{% endblock %}
+
+{% block mainbody %}
+    <div class="new-group-button">
+        <button style="border-radius: 7px;" type="button" class="btn btn-outline-secondary btn-md" onclick="location.href='{% url "create_kaigroup" %}'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+              </svg>
+            <span class="button-text">Create New Group</span>
+        </button>
+    </div>
+    <div class="row group-list">
+        {% for group in group_list %}
+          <div class="col-md-4">
+            <div class="card mb-4" style="padding-top: 1rem;background-color: #0D304A">
+              <img class="card-img" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 180px; width: 65%; align-self: center; border: darkcyan solid 1px" src={{ group.group_image.url }} data-holder-rendered="true">
+              <div class="card-body">
+                <a class="group-name-link" href={% url "kaigroup" group.slug %}><p class="card-text group-name">{{ group.name }}</p></a>
+                <div class="tag-list">
+                    {% for motivation in group.motivations.all %}
+                    <span class="tag">{{ motivation }}</span>
+                    {% endfor %}
+                    {% for interest in group.interests.all %}
+                    <span class="tag">{{ interest }}</span>
+                    {% endfor %}
+                </div>
+                <div class="leader-info">
+                    <p>Leader: <a href={% url "profile" group.creator.username %}>{{ group.creator }}</a></p>
+                </div>
+                <p class="card-text text-white group-about">{{ group.about }}</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

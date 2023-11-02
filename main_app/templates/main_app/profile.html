@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page-title %} 
+    Profile Page
+{% endblock%}
+
+{% block css-stylesheet %}
+    <link rel="stylesheet" href={% static "main_app/profile.css" %}>
+
+    <!-- syntax highlighting for code snippets, CDN for highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/monokai.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+{% endblock %}
+
+{% block mainbody %}
+  <div class="container text-center text-white">
+    <div class="row">
+      <div class="col-lg-5 profile-card">
+        <div class="col-lg-12 user-card">
+            <img class="profile-picture rounded-circle" width="220" height="200" src="{{ profileinfo.profileinfo.avatar.url }}" alt="user_avatar">
+        </div>
+        <div class="col-lg-12">
+          <h1 id="username">{{ profileinfo.username }}</h1>
+          <h4 id="rank" class="{{ profileinfo.profileinfo.rank }}">{{ profileinfo.profileinfo.rank }}</h4>
+          <h4 id="coder-kai-points">Kudos: {{ profileinfo.profileinfo.kudos }}</h4>
+          {% if user.username == profileinfo.username %}
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle button-options" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+                        <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                        <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+                      </svg>
+                    Options
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href={% url "edit_profile" pk=profileinfo.profileinfo.pk %}>Edit Profile</a>
+                  <a class="dropdown-item" href={% url "password_change" %}>Change Password</a>
+                  <a class="dropdown-item" href={% url "logout" %}>Log Out</a>
+                </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-lg-6 profile-info-box">
+        <div class="row">
+            <div class="col">
+                <h3 id="profile-header">Profile</h3>
+            </div>
+        </div>
+        <div class="row profile-row">
+            <div class="col-4 profile-item bg">
+                <p style="display: block;" class="profile-info-label">About:</p>
+            </div>
+            <div class="col-8 profile-info-answer">
+                <p>{{ profileinfo.profileinfo.about_me }}</p>
+            </div>
+        </div>
+        <div class="row profile-row">
+            <div class="col-4 profile-item">
+                <span class="profile-info-label">Motivations:</span>
+            </div>
+            <div class="col-8 profile-info-answer">
+                {% for motivation in profileinfo.profileinfo.motivations.all %}
+                <span class="motivation-tag">{{ motivation }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row profile-row">
+            <div class="col-4 profile-item">
+                <span class="profile-info-label">Interests:</span>
+            </div>
+            <div class="col-8 profile-info-answer">
+                {% for interest in profileinfo.profileinfo.interests.all %}
+                <span class="interest-tag">{{ interest }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row profile-row">
+            <div class="col-4 profile-item">
+                <span class="profile-info-label">Awards:</span>
+            </div>
+            <div class="col-8 profile-info-answer">
+                <span>None</span>
+            </div>
+        </div>
+      </div>
+      <div class="col-lg-1">
+      </div>
+    </div>
+
+
+    <div class="container profile-stats">
+        <div class="row">
+            <div class="col">
+                <h3 id="stats-header">Stats</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row stat-row">
+                    <div class="col stat-info-item">
+                        Date Joined:
+                    </div>
+                    <div class="col date">
+                        {{ user.date_joined }}
+                    </div>
+                </div>
+                <div class="row stat-row">
+                    <div class="col stat-info-item">
+                        Last Login:
+                    </div>
+                    <div class="col date">
+                        {{ user.last_login }}
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row stat-row">
+                    <div class="col stat-info-item">
+                        Questions Asked:
+                    </div>
+                    <div class="col">
+                        {{ num_of_questions }}
+                    </div>
+                </div>
+                <div class="row stat-row">
+                    <div class="col stat-info-item">
+                        Answers Posted:
+                    </div>
+                    <div class="col">
+                        {{ num_of_answers }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container highest-scoring-posts">
+        <div class="row">
+            <div class="col">
+                <h3 id="highest-scoring-posts-header">Most Kudosed</h3>
+            </div>
+        </div>
+        {% if top3_answers %}
+            {% for answer in top3_answers.all %}
+                <div class="row">    
+                    <div class="container response">
+                        <div class="row full-response">
+                            <div class="col-1 coderkaipoint-operation">
+                                <p style="font-size:1.2rem;">Kudos: {{ answer.kudos }}</p>
+                            </div>
+                            <div class="col-11 post-body-response">
+                                <div class="response-text">
+                                    <p style="white-space: pre-line">
+                                    {{ answer.body|safe }}
+                                    </p>
+                                    <p class="timestamp"> Posted on {{ answer.timestamp }} in <span><a class="top-post-link" href={% url "post_content" answer.post.slug %}>{{ answer.post.title}}</a><span></p>
+                                    <p class="coderkaikudos-operation-mobile">Kudos: {{ answer.kudos}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="margin: 1rem 0rem 3rem 0rem; font-size: 1.5rem;">No answers posted yet</p>
+        {% endif %}
+    </div>
+  
+<script>hljs.highlightAll();</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

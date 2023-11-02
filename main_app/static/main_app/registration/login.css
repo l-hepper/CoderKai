@@ -1,0 +1,117 @@
+body {
+    height: 100%;
+}
+
+h2 {
+    margin-top: 5rem;
+    text-align: center;
+    color: goldenrod;
+}
+
+#login-form {
+    padding: 2rem;
+    background-color: #0D304A;
+    border-radius: 6px;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: goldenrod;
+    width: 30%;
+    margin-left: 35%;
+    margin-bottom: 5rem;
+}
+
+label {
+    font-size: 1.3rem;
+}
+
+.errorlist {
+    color: crimson;
+}
+
+#id_password,#id_username {
+    padding-left: 0.5rem;
+    font-size: 1.4rem;
+    height: 3rem;
+    border-radius:6px;
+    margin-top: 0.2rem;
+}
+
+#id_username {
+    margin-bottom: 1.5rem;
+}
+
+#id_password {
+    margin-bottom: 0.3rem;
+}
+
+.login-button {
+    color: goldenrod;
+    border: solid goldenrod 1px;
+    margin-bottom: 4rem;
+}
+
+#form-buttons {
+    margin-top: 0.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#reset-password {
+    display: flex;
+    justify-content: right;
+    margin-bottom: 1rem;
+}
+
+#reset-password > a {
+    border: none;
+    font-size: 0.9rem;
+    background-color: #0D304A;
+    text-decoration: none;
+}
+
+#signup-prompt {
+    color: #7797BF;
+}
+
+#signup-prompt > a {
+    border: none;
+    background-color: #0D304A;
+    text-decoration: none;
+}
+
+@media (max-width: 575px) {
+
+    h2 {
+        margin-top: 2rem;
+        text-align: center;
+        color: goldenrod;
+    }
+
+
+    #login-form {
+        padding: 0.8rem;
+        width: 80%;
+        margin-left: 10%;
+        margin-bottom: 0rem;
+    }
+
+    .login-button {
+        color: goldenrod;
+        border: solid goldenrod 1px;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+
+    label {
+        font-size: 1.2rem;
+    }
+
+    #reset-password > button {
+        font-size: 0.8rem;
+    }
+}
+

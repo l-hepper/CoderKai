@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page-title%}
+  Coder Kai - Community Posts
+{% endblock %}
+
+{% block css-stylesheet %}
+    <link rel="stylesheet" href={% static "main_app/posts.css" %}>
+{% endblock %}
+
+{% block mainbody %}
+    <div id="sort-posts">
+        <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle button-options" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                    <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                  </svg>
+                <span class="button-text-mobile">Sort</span>
+                <span class="button-text">{{ sort_option|title }}</span>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="?sort=most_recent&filter={{ request.GET.filter }}">Most Recent</a>
+              <a class="dropdown-item" href="?sort=most_active&filter={{ request.GET.filter }}">Most Active</a>
+              <a class="dropdown-item" href="?sort=most_kudosed&filter={{ request.GET.filter }}">Most Kudosed</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle button-options" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
+                    <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"/>
+                  </svg>
+                <span class="button-text-mobile">Filter</span>
+                <span class="button-text">{{ filter_option|title }}</span>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="?filter=all&sort={{ request.GET.sort }}">All</a>
+              <a class="dropdown-item" href="?filter=unanswered_only&sort={{ request.GET.sort }}">Unanswered Only</a>
+              <a class="dropdown-item" href="?filter=introduction_only&sort={{ request.GET.sort }}">Introductions Only</a>
+              <a class="dropdown-item" href="?filter=question_only&sort={{ request.GET.sort }}">Questions Only</a>
+              <a class="dropdown-item" href="?filter=discussion_only&sort={{ request.GET.sort }}">Discussions Only</a>
+
+            </div>
+        </div>
+        <button style="border-radius: 7px;" id="new-post-button" type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='{% url "new_post" %}'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+              </svg>
+            <span class="button-text">New</span>
+            <span class="button-text-mobile">New</span>
+        </button>
+    </div>
+
+
+    <div id="post-list">
+        <ul>
+            {% for post, replies in posts.items %}
+                <li class="post-item">
+                    <article>
+                        <a href="{% url "post_content" post.slug %}"><h3 class="post-title">{{ post.title|capfirst }}</h3></a>
+                        <span class="post-type-tag {{ post.type_tag.name }}">
+                            {{ post.type_tag }}
+                        </span>
+                        <div class="tag-list-mobile">
+                            {% for tag in post.tags.all %}
+                            <span><li class="tag-mobile">{{ tag }}</li></span>
+                            {% endfor %}
+                        </div>
+                        <p style="white-space: pre-line; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;" class="post-preview">{{ post.preview }}</p>
+                        <div class="post-info">
+                                <div class="post-replies">
+                                    <svg style="margin: 0;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-right-text" viewBox="0 0 16 16">
+                                        <path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z"/>
+                                        <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                                    </svg> {{ replies }} 
+                                </div>
+                                <div class="post-kudos-count">
+                                    <svg style="margin: 0;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+                                        <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+                                      </svg>
+                                {{ post.kudos }}
+                                </div>
+                            <div class="tag-list">Tags:
+                                {% for tag in post.tags.all %}
+                                <span><li class="tag">{{ tag }}</li></span>
+                                {% endfor %}
+                            </div>
+                            <div class="post-author">Posted by <span><a class="username" href={% url "profile" post.author %}>{{ post.author }} </a></span> on {{ post.timestamp }}</span></div>
+                        </div>
+                    </article>
+                </li>
+            <hr style="color: #2F648E" />
+            {% endfor %}
+        </ul>
+    </div>
+
+    <nav aria-label="Page navigation" class="pagination">
+        <ul class="pagination">
+            {% if posts_pag.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ posts_pag.previous_page_number }}">Previous Page</a></li>
+            {% else %}
+                <li class="page-item"><a class="page-link disabled-gold">Previous Page</a></li>
+            {% endif %}
+
+            {% if posts_pag.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ posts_pag.next_page_number }}">Next Page</a></li>
+            {% else %}
+                <li class="page-item"><a class="page-link disabled-gold">Next Page</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}
